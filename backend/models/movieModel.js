@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const bookSchema = mongoose.Schema(
+const movieSchema = mongoose.Schema(
   {
     title: {
       type: String,
@@ -26,6 +26,7 @@ const bookSchema = mongoose.Schema(
     rating: {
       type: Number,
       required: true,
+      range: [0, 10]
     },
   },
   {
@@ -33,4 +34,4 @@ const bookSchema = mongoose.Schema(
   }
 );
 
-export const Book = mongoose.model('Book', bookSchema);
+export const Movie = mongoose.model('Movie', movieSchema);

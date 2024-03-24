@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import booksRoute from './routes/moviesRoute.js';
+import moviesRoute from './routes/moviesRoute.js';
 import cors from 'cors';
 import dotenv from 'dotenv'
 dotenv.config();
@@ -27,7 +27,7 @@ app.get('/', (request, response) => {
   return response.status(234).send('Backend Home');
 });
 
-app.use('/books', booksRoute);
+app.use('/movies', moviesRoute);
 const PORT = process.env.PORT || 5000;
 mongoose
   .connect(process.env.DB_URL)

@@ -4,17 +4,17 @@ import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 
-const ShowBook = () => {
-  const [book, setBook] = useState({});
+const ShowMovie = () => {
+  const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(import.meta.env.VITE_API_URL+`/books/${id}`)
+      .get(import.meta.env.VITE_API_URL+`/movies/${id}`)
       .then((response) => {
-        setBook(response.data);
+        setMovie(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -33,27 +33,27 @@ const ShowBook = () => {
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Id</span>
-            <span>{book._id}</span>
+            <span>{movie._id}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Title</span>
-            <span>{book.title}</span>
+            <span>{movie.title}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Language</span>
-            <span>{book.language}</span>
+            <span>{movie.language}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Release Year</span>
-            <span>{book.releaseYear}</span>
+            <span>{movie.releaseYear}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Create Time</span>
-            <span>{new Date(book.createdAt).toString()}</span>
+            <span>{new Date(movie.createdAt).toString()}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Last Update Time</span>
-            <span>{new Date(book.updatedAt).toString()}</span>
+            <span>{new Date(movie.updatedAt).toString()}</span>
           </div>
         </div>
       )}
@@ -61,4 +61,4 @@ const ShowBook = () => {
   );
 };
 
-export default ShowBook;
+export default ShowMovie;

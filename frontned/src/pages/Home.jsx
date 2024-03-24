@@ -5,21 +5,21 @@ import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
-import BooksTable from '../components/home/BooksTable';
-import BooksCard from '../components/home/BooksCard';
+import MoviesTable from '../components/home/MoviesTable';
+import MoviesCard from '../components/home/MoviesCard';
 import FilterPage from './Filter';
 
 const Home = () => {
-  const [books, setBooks] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table');
   const [titleFilter, setTitleFilter] = useState('');
   useEffect(() => {
     setLoading(true);
     axios
-      .get(import.meta.env.VITE_API_URL+'/books')
+      .get(import.meta.env.VITE_API_URL+'/movies')
       .then((response) => {
-        setBooks(response.data.data);
+        setMovies(response.data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -40,11 +40,11 @@ const Home = () => {
     };
 
     axios
-      .get(import.meta.env.VITE_API_URL+'/books', {
+      .get(import.meta.env.VITE_API_URL+'/movies', {
         params: filters,
       })
       .then((response) => {
-        setBooks(response.data.data);
+        setMovies(response.data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -74,16 +74,16 @@ const Home = () => {
         </div>
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl my-8'>Movies List</h1>
-        <Link to='/books/create'>
+        <Link to='/movies/create'>
           <MdOutlineAddBox className='text-sky-800 text-4xl' />
         </Link>
       </div>
       {loading ? (
         <Spinner />
       ) : showType === 'table' ? (
-        <BooksTable books={books} />
+        <MoviesTable movies={movies} />
       ) : (
-        <BooksCard books={books} />
+        <MoviesCard movies={movies} />
       )}
     </div>
   );

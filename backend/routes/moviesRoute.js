@@ -1,10 +1,10 @@
 import express from 'express';
-import { Book } from '../models/movieModel.js';
+import { Movie } from '../models/movieModel.js';
 
 
 const router = express.Router();
 
-// Route for Save a new Book
+// Route for Save a new Movie
 router.post('/', async (request, response) => {
   try {
     if (
@@ -18,7 +18,7 @@ router.post('/', async (request, response) => {
         message: 'Send all required fields',
       });
     }
-    const newBook = {
+    const newMovie = {
       title: request.body.title,
       language: request.body.language,
       releaseYear: request.body.releaseYear,
@@ -26,9 +26,9 @@ router.post('/', async (request, response) => {
       rating: request.body.rating,
     };
 
-    const book = await Book.create(newBook);
+    const movie = await Movie.create(newMovie);
 
-    return response.status(201).send(book);
+    return response.status(201).send(movie);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -61,14 +61,14 @@ router.get('/', async (request, response) => {
     }
 
     if(rating) {
-      filter.rating = {$gte: parseInt(rating, 10)}
+      filter.rating = {$gte: parseFloat(rating, 10)}
     }
 
-    const books = await Book.find(filter);
+    const movies = await Movie.find(filter);
 
     return response.status(200).json({
-      count: books.length,
-      data: books,
+      count: movies.length,
+      data: movies,
     });
   } catch (error) {
     console.log(error.message);
@@ -77,21 +77,21 @@ router.get('/', async (request, response) => {
 });
 
 
-// Route for Get One Book from database by id
+// Route for Get One Movie from database by id
 router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
 
-    const book = await Book.findById(id);
+    const movie = await Movie.findById(id);
 
-    return response.status(200).json(book);
+    return response.status(200).json(movie);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
   }
 });
 
-// Route for Update a Book
+// Route for Update a Movie
 router.put('/:id', async (request, response) => {
   try {
     if (
@@ -108,31 +108,31 @@ router.put('/:id', async (request, response) => {
 
     const { id } = request.params;
 
-    const result = await Book.findByIdAndUpdate(id, request.body);
+    const result = await Movie.findByIdAndUpdate(id, request.body);
 
     if (!result) {
-      return response.status(404).json({ message: 'Book not found' });
+      return response.status(404).json({ message: 'Movie not found' });
     }
 
-    return response.status(200).send({ message: 'Book updated successfully' });
+    return response.status(200).send({ message: 'Movie updated successfully' });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
   }
 });
 
-// Route for Delete a book
+// Route for Delete a movie
 router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;
 
-    const result = await Book.findByIdAndDelete(id);
+    const result = await Movie.findByIdAndDelete(id);
 
     if (!result) {
-      return response.status(404).json({ message: 'Book not found' });
+      return response.status(404).json({ message: 'Movie not found' });
     }
 
-    return response.status(200).send({ message: 'Book deleted successfully' });
+    return response.status(200).send({ message: 'Movie deleted successfully' });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });

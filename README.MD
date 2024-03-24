@@ -2,9 +2,10 @@
 MongoDB, Expressjs, React, Nodejs
 </p>
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facemovie/react/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
 
 # Live Site
+
 - https://profound-alfajores-d8d852.netlify.app
 
 # Project Walkthrough!
