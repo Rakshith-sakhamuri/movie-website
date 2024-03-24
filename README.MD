@@ -8,9 +8,6 @@ MongoDB, Expressjs, React, Nodejs
 
 - https://profound-alfajores-d8d852.netlify.app
 
-# Project Walkthrough!
-
-- https://youtu.be/EhO-gYyu7Qw?si=XZeFXAaSKz0xmN87
 
 # Features!
 
