@@ -13,7 +13,7 @@ const EditMovie = () => {
   const [rating, setRating] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { id } = useParams();  // Add this line to get 'id' from route parameters
+  const { id } = useParams(); 
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
