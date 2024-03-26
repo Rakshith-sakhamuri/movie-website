@@ -6,7 +6,7 @@ MongoDB, Expressjs, React, Nodejs
 
 # Live Site
 
-- https://profound-alfajores-d8d852.netlify.app
+- https://movie-website-rakshith.netlify.app/
 
 
 # Features!
